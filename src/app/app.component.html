@@ -1,0 +1,10 @@
+
+<div class="container-fluid">
+    <router-outlet *ngIf="!authService.getToken()"></router-outlet>
+    <app-main-nav *ngIf="authService.getToken()">
+        <div class="content">
+            <router-outlet></router-outlet>
+        </div>
+    </app-main-nav>
+</div>
+<ngx-spinner></ngx-spinner>

@@ -1,0 +1,38 @@
+<div class="row justify-content-center">
+    <h2>{{mId === 0 ? 'Add ' : mId > 0 ? 'Edit ' : ''}} Manufacturer</h2>
+</div>
+<div class="row form-container">
+    <div class="col-md-7">
+        <form [formGroup]="form" (ngSubmit)="save(form.value)">
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Vendor Name</label>
+                <div class="col-sm-9">
+                    <select class="form-control" formControlName="vId">
+                        <option *ngFor="let v of manufacturerService.vendorList" [value]="v.vId">{{v.vendorName}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Manufacturer Name</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" formControlName="manufacturerName" required
+                        placeholder="Enter Manufacturer Name">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Sponsor Name</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" formControlName="spName" required placeholder="Enter Name">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Sponsor Email</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" formControlName="spEmail" required placeholder="Enter Email">
+                </div>
+            </div>
+
+            <button type="submit" [disabled]="!form.valid" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+</div>

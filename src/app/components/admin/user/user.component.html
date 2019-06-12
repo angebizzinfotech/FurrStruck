@@ -1,0 +1,38 @@
+<div class="row" *ngIf="authService.getRoleNo() === '10'">
+    <div class="col-md-9">
+        <h2>User Details</h2>
+    </div>
+    <div class="col-md-12">
+        <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
+        </mat-form-field>
+    </div>
+    <!--    </div>-->
+    <div class="col-md-12">
+
+        <table id="datatable" mat-table  [dataSource]="dataSource"
+               class="mat-elevation-z8 table table-striped table-bordered dataTable no-footer">
+            <ng-container matColumnDef="firstName">
+                <th mat-header-cell *matHeaderCellDef> Full Name</th>
+                <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+            </ng-container>
+            <ng-container matColumnDef="userName">
+                <th mat-header-cell *matHeaderCellDef> User Name</th>
+                <td mat-cell *matCellDef="let element"> {{element.userName}} </td>
+            </ng-container>
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef> Action</th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-icon-button style="color: #ff4081" routerLink="/admin/user/detail/{{element.uId}}">
+                        <mat-icon aria-label="Edit">edit</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[10, 20, 30, 50, 100]"></mat-paginator>
+    </div>
+</div>

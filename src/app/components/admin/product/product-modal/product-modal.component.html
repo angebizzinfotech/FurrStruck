@@ -1,0 +1,263 @@
+<form [formGroup]="form" (ngSubmit)="save(form.value)">
+    <div class="row">
+        <div class="col-md-9">
+            <h2>{{pId === 0 ? 'Add ' : pId > 0 ? 'Edit ' : ''}} Product Details</h2>
+        </div>
+        {{categoryName}}
+        <div class="col-md-8 leftbar">
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Category<span class="required">*</span></label>
+                <div class="col-sm-9">
+                    <select class="form-control" (ngModelChange)="getSubcategory($event)" formControlName="catId"
+                            required>
+                        <option *ngFor="let v of productService.categoryList"
+                                [value]="v.catId">{{v.categoryName}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Sub Category<span class="required">*</span></label>
+                <div class="col-sm-9">
+                    <select class="form-control" formControlName="subcatId" required>
+                        <option *ngFor="let v of subCategory" [value]="v.subcatId">{{v.subcategoryName}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Vendor<span class="required">*</span></label>
+                <div class="col-sm-9">
+                    <select class="form-control" (ngModelChange)="getManufacturer($event)" formControlName="vId"
+                            required>
+                        <option *ngFor="let v of productService.vendorList"
+                                [value]="v.vId">{{v.vendorName}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Manufacturer<span class="required">*</span></label>
+                <div class="col-sm-9">
+                    <select class="form-control" formControlName="mId" required>
+                        <option *ngFor="let v of Manufacturer" [value]="v.mId">{{v.manufacturerName}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Product Name<span class="required">*</span></label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" formControlName="productName"
+                           placeholder="Enter Product Name" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Universal product Code<span class="required">*</span></label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" (keypress)="commonService.onlyDecimalNumber($event)"
+                           formControlName="upc" required
+                           placeholder="Enter Universal product Code">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Size</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" formControlName="size"
+                           placeholder="Enter Size" (keypress)="commonService.onlyDecimalNumber($event)">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Unit Weight</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" formControlName="unitWeight"
+                           placeholder="Enter Unit Weight" (keypress)="commonService.onlyDecimalNumber($event)">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Qty Per Unit</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" formControlName="qtyPerUnit"
+                           placeholder="Enter Qty Per Unit"
+                           (keypress)="commonService.onlyDecimalNumber($event)">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Unit Price</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" formControlName="unitPrice"
+                           placeholder="Enter Unit Price"
+                           (keypress)="commonService.onlyDecimalNumber($event)">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">MSRP</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" formControlName="msrp"
+                           placeholder="Enter Manufacturer Suggested Retail Price"
+                           (keypress)="commonService.onlyDecimalNumber($event)">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">MAP</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" formControlName="map"
+                           placeholder="Enter Minimum Advertising Price"
+                           (keypress)="commonService.onlyDecimalNumber($event)">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Sell Price</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" formControlName="sellPrice"
+                           placeholder="Enter Sell Price"
+                           (keypress)="commonService.onlyDecimalNumber($event)">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Discount</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" formControlName="discount"
+                           placeholder="Enter Discount"
+                           (keypress)="commonService.onlyDecimalNumber($event)">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Units On Order</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" formControlName="unitsOnOrder"
+                           placeholder="Enter Units On Order"
+                           (keypress)="commonService.onlyDecimalNumber($event)">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Units On Stock</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" formControlName="unitsInStock"
+                           placeholder="Enter Units On Stock"
+                           (keypress)="commonService.onlyDecimalNumber($event)">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Re-Order Level</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" formControlName="reorderLevel"
+                           placeholder="Enter Re-Order Level"
+                           (keypress)="commonService.onlyDecimalNumber($event)">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Discount Avail</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" formControlName="discountAvail"
+                           placeholder="Enter Discount Avail"
+                           (keypress)="commonService.onlyDecimalNumber($event)">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Pet Type<span class="required">*</span></label>
+                <div class="col-sm-9">
+                    <select class="form-control" formControlName="petType" required>
+                        <option value="C">Cat</option>
+                        <option value="D">Dog</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Direction</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" formControlName="direction"
+                           placeholder="Enter Direction">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Additional Details</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" formControlName="additionalDetails"
+                           placeholder="Enter Additional Details">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Warrenty</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" formControlName="waranty"
+                           placeholder="Enter Warrenty">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">More Info</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" formControlName="moreInfo"
+                           placeholder="Enter More Info">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Status</label>
+                <div class="col-sm-9">
+                    <select class="form-control" formControlName="status">
+                        <option value="1">Active</option>
+                        <option value="0">InActive</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Description<span class="required">*</span></label>
+                <div class="col-sm-9">
+                    <textarea class="form-control" formControlName="productDescription"
+                              placeholder="Enter Description" required></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 rightbar">
+            <div class="col-md-12">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Image</label>
+                    <div class="upload-image">
+                        <div #image class="image-wrapper"></div>
+                        <div class="browse-btn">
+                            <input type="file" formControlName="image" id="pimage" multiple (change)="onUploadChange($event)" /> 
+                            <div class="browse-image">
+                                <img src="assets/images/camera.png" width="60px" />
+                                <p>Browse image</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="col-sm-9"><input type="file" (change)="onUploadChange($event)" multiple
+                                                 formControlName="image"/>
+                    </div> -->
+                </div>
+            </div>
+            <div class="col-md-12">
+                <table formArrayName="pImages">
+                    <tbody>
+                    <tr *ngFor="let orderItem of getControls(); let i = index" [formGroupName]="i">
+                        <td *ngIf="form.value.pImages[i].piId === 0">
+                            <img [src]="urls[i]" class="rounded mb-3" width="60" height="60">
+                        </td>
+                        <td *ngIf="form.value.pImages[i].piId > 0">
+                            <img [src]="form.value.pImages[i].pImg" class="rounded mb-3" width="60" height="60">
+                        </td>
+                        <td>
+                            <select class="form-control" formControlName="imageOrder">
+                                <option *ngFor="let o of form.value.pImages;let j = index"
+                                        value="{{j + 1}}">{{j + 1}}</option>
+                            </select>
+                            <span *ngIf="form.value.pImages[i].piId > 0" (click)="delete(form.value.pImages[i].piId, i)">
+                                <button class="delete" mat-icon-button style="color: #ff4081">
+                                    <mat-icon aria-label="Delete">delete</mat-icon>
+                                </button></span>
+                            <span *ngIf="form.value.pImages[i].piId === 0" (click)="remove(i)">
+                                <button class="delete" mat-icon-button style="color: #ff4081">
+                                    <mat-icon>remove_circle</mat-icon>
+                                </button>
+                            </span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+           
+        </div>
+        
+        
+    </div>
+    <div class="row justify-content-center">
+        <button type="submit" [disabled]="!form.valid" class="btn btn-primary">Save</button>
+    </div>
+</form>

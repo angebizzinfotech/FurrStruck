@@ -1,0 +1,32 @@
+<div class="row justify-content-center">
+    <h2>{{vId === 0 ? 'Add ' : vId > 0 ? 'Edit ' : ''}} Vendor</h2>
+</div>
+<div class="row form-container">
+    <div class="col-md-7">
+        <form [formGroup]="form" (ngSubmit)="save(form.value)">
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Vendor Name</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" formControlName="vendorName" required
+                    placeholder="Enter Vendor Name">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Contact Person Name</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" formControlName="contactPersonName" required
+                        placeholder="Enter Contact Person Name">
+                </div>
+                
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Contact Person Email</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" formControlName="contactPersonEmail" required
+                        placeholder="Enter Contact Person Email">
+                </div>
+            </div>
+            <button type="submit" [disabled]="!form.valid" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+</div>

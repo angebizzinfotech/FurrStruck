@@ -1,0 +1,34 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+                 [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+                 [mode]="(isHandset$ | async) ? 'over' : 'side'"
+                 [opened]="!(isHandset$ | async)">
+
+        <mat-toolbar class="mat-toolbar sidebarFont setTitle"><i class="fa fa-paw"></i>Admin Panel</mat-toolbar>
+        <mat-nav-list>
+            <app-sidebar></app-sidebar>
+<!--            <a mat-list-item href="#">Link 1</a>-->
+<!--            <a mat-list-item href="#">Link 2</a>-->
+<!--            <a mat-list-item href="#">Link 3</a>-->
+<!--            <mat-icon matBadge="22" matBadgePosition="above after">home</mat-icon>-->
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-toolbar color="primary">
+            <button
+                type="button"
+                aria-label="Toggle sidenav"
+                mat-icon-button
+                (click)="drawer.toggle()"
+                *ngIf="isHandset$ | async">
+                <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+            </button>
+            <mat-icon *ngIf="isHandset$" (click)="drawer.toggle()" class="menuicon maxWidth" aria-label="Side nav toggle icon">menu</mat-icon>
+            <span *ngIf="authService.getRoleNo() === '10'">Admin</span>
+            <span *ngIf="authService.getRoleNo() !== '10'">System Admin</span>
+            <mat-icon class="person" (click)="commonService.logout()">person</mat-icon>
+        </mat-toolbar>
+        <ng-content></ng-content>
+        <!-- Add Content Here -->
+    </mat-sidenav-content>
+</mat-sidenav-container>

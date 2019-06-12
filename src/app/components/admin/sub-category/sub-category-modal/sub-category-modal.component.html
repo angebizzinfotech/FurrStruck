@@ -1,0 +1,47 @@
+<!--<div class="row justify-content-center">-->
+<!--    <h2>{{data.mode === 1 ? 'Add' : data.mode === 2 ? 'Edit' : 'View'}} Form</h2>-->
+<!--</div>-->
+<!--<div class="row">-->
+<!--    <div class="col-md-12">-->
+<!--        <form [formGroup]="form" (ngSubmit)="save(form.value)">-->
+<!--            <div class="form-group">-->
+<!--                <label>Category Name : </label>-->
+<!--                {{catName}}-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--                <label>Sub Category Name</label>-->
+<!--                <input type="text" class="form-control" formControlName="subcategoryName" required-->
+<!--                       placeholder="Enter Category Name">-->
+<!--            </div>-->
+<!--            <button type="submit" [disabled]="!form.valid" class="btn btn-primary">Save</button>-->
+<!--        </form>-->
+<!--    </div>-->
+<!--</div>-->
+<div class="row justify-content-center">
+    <h2>{{sCId === 0 ? 'Add' : sCId > 0 ? 'Edit' : ''}} Form</h2>
+</div>
+<div class="row form-container">
+    <div class="col-md-6">
+        <form [formGroup]="form" (ngSubmit)="save(form.value)">
+
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Category</label>
+                <div class="col-sm-9">
+                    <select class="form-control" required formControlName="catId">
+                        <option *ngFor="let role of categoryList"
+                                [value]="role.catId">{{role.categoryName}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Sub Category Name</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" formControlName="subcategoryName" required
+                           placeholder="Enter UserName">
+                </div>
+            </div>
+            <button type="submit" [disabled]="!form.valid" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+</div>
+

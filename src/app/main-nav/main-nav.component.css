@@ -1,0 +1,67 @@
+.sidenav-container {
+    height: 100%;
+}
+
+.sidenav {
+    width: 230px;
+}
+.mat-toolbar {
+    background: #EDEDED;
+    border-bottom: 1px solid #D9DEE4;
+    margin-bottom: 10px;
+}
+.sidenav .mat-toolbar {
+    background: inherit;
+}
+.mat-toolbar.mat-primary {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+.menuicon {
+    cursor: pointer;
+}
+.person {
+    cursor: pointer;
+}
+span {
+    justify-content: left;
+    display: flex;
+    width: 100%;
+    color: black;
+    padding-left: 22px;
+}
+mat-sidenav {
+    background: #2A3F54;
+}
+.sidebarFont {
+    color: white !important;
+}
+.setTitle {
+    font-size: 22px;
+}
+.setTitle i {
+    border: 1px solid #EAEAEA;
+    padding: 5px 6px;
+    border-radius: 50%;
+}
+.person {
+    justify-content: flex-end;
+    width: 100%;
+    display: flex;
+    color: black;
+}
+.maxWidth {
+    color: black;
+}
+
+@media(max-width: 960px) {
+    .menuicon {
+        display: none;
+    }
+}
+
+[type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+    cursor: pointer;
+    color: black;
+}

@@ -1,0 +1,94 @@
+<div id="sidebar-menu" class="main_menu_side hidden-print main_menu" *ngIf="authService.getRoleNo() === '10'">
+    <div class="menu_section active">
+        <ul class="nav side-menu">
+            <li>
+                <a routerLink="admin/dashboard">
+                    <i class="fa fa-home"></i> Home
+                </a>
+            </li>
+            <li [ngClass]="((menu.length > 0) && (menu[0].tagname === 'user' && menu[0].activeClass === true)) ? 'active' : ''">
+                <a (click)="menuBarActive('user', 0)">
+                    <i class="fa fa-users" aria-hidden="true"></i> User Management
+                    <span class="fa"
+                          [ngClass]="((menu.length > 0) && (menu[0].tagname === 'user' && menu[0].activeClass === true)) ? 'fa-chevron-down' : 'fa-chevron-right'">
+                    </span>
+                </a>
+                <ul class="nav child_menu" [ngStyle]="{'display': ((menu.length > 0 && menu[0].tagname === 'user')) ? 'block' : 'none' }">
+                    <li class="current-page"><a href="#" routerLink="admin/user">List</a></li>
+                    <li class="current-page"><a href="#" routerLink="admin/user/detail/0">Add</a></li>
+                </ul>
+            </li>
+            <li [ngClass]="((menu.length > 0) && (menu[0].tagname === 'config' && menu[0].activeClass === true)) ? 'active' : ''">
+                <a (click)="menuBarActive('config', 0)">
+                    <i class="fa fa-gear"></i> Config
+                    <span class="fa"
+                          [ngClass]="((menu.length > 0) && (menu[0].tagname === 'config' && menu[0].activeClass === true)) ? 'fa-chevron-down' : 'fa-chevron-right'">
+                    </span>
+                </a>
+                <ul class="nav child_menu"
+                    [ngStyle]="{'display':((menu.length > 0) && (menu[0].tagname === 'config' && menu[0].activeClass === true)) ? 'block' : 'none' }">
+                    <li [ngClass]="((menu[1] !== undefined) && (menu[1].tagname === 'product' && menu[1].activeClass === true)) ? 'active' : ''">
+                        <a (click)="menuBarActive('product', 1)">
+                            <i class="fa fa-clone"></i> Product
+                            <span class="fa"
+                                  [ngClass]="((menu[1] !== undefined) && (menu[1].tagname === 'product' && menu[1].activeClass === true)) ? 'fa-chevron-down' : 'fa-chevron-right'">
+                            </span>
+                        </a>
+                        <ul class="nav child_menu" [ngStyle]="{'display':((menu[1] !== undefined) && (menu[1].tagname === 'product')) ? 'block' : 'none' }">
+                            <li class="current-page"><a href="#" routerLink="admin/product/detail/0">Add</a></li>
+                            <li class="current-page"><a href="#" routerLink="admin/product">Edit</a></li>
+                        </ul>
+                    </li>
+                    <li [ngClass]="((menu[1] !== undefined) && (menu[1].tagname === 'manufacturer' && menu[1].activeClass === true)) ? 'active' : ''">
+                        <a (click)="menuBarActive('manufacturer', 1)">
+                            <i class="fa fa-industry"></i> Manufacturer
+                            <span class="fa"
+                                  [ngClass]="((menu[1] !== undefined) && (menu[1].tagname === 'manufacturer' && menu[1].activeClass === true)) ? 'fa-chevron-down' : 'fa-chevron-right'">
+                            </span>
+                        </a>
+                        <ul class="nav child_menu" [ngStyle]="{'display':((menu[1] !== undefined) && (menu[1].tagname === 'manufacturer')) ? 'block' : 'none' }">
+                            <li class="current-page"><a href="#" routerLink="admin/manufacturer/detail/0">Add</a></li>
+                            <li class="current-page"><a href="#" routerLink="admin/manufacturer">Edit</a></li>
+                        </ul>
+                    </li>
+                    <li [ngClass]="((menu[1] !== undefined) && (menu[1].tagname === 'vendor' && menu[1].activeClass === true)) ? 'active' : ''">
+                        <a (click)="menuBarActive('vendor', 1)">
+                            <i class="fa fa-clone"></i> Vendor
+                            <span class="fa"
+                                  [ngClass]="((menu[1] !== undefined) && (menu[1].tagname === 'vendor' && menu[1].activeClass === true)) ? 'fa-chevron-down' : 'fa-chevron-right'">
+                            </span>
+                        </a>
+                        <ul class="nav child_menu" [ngStyle]="{'display':((menu[1] !== undefined) && (menu[1].tagname === 'vendor')) ? 'block' : 'none' }">
+                            <li class="current-page"><a href="#" routerLink="admin/vendor/detail/0">Add</a></li>
+                            <li class="current-page"><a href="#" routerLink="admin/vendor">Edit</a></li>
+                        </ul>
+                    </li>
+                    <li [ngClass]="((menu[1] !== undefined) && (menu[1].tagname === 'category' && menu[1].activeClass === true)) ? 'active' : ''">
+                        <a (click)="menuBarActive('category', 1)">
+                            <i class="fa fa-clone"></i> Category
+                            <span class="fa"
+                                  [ngClass]="((menu[1] !== undefined) && (menu[1].tagname === 'category' && menu[1].activeClass === true)) ? 'fa-chevron-down' : 'fa-chevron-right'">
+                            </span>
+                        </a>
+                        <ul class="nav child_menu" [ngStyle]="{'display':((menu[1] !== undefined) && (menu[1].tagname === 'category')) ? 'block' : 'none' }">
+                            <li class="current-page"><a href="#" routerLink="admin/category/detail/0">Add</a></li>
+                            <li class="current-page"><a href="#" routerLink="admin/category">Edit</a></li>
+                        </ul>
+                    </li>
+                    <li [ngClass]="((menu[1] !== undefined) && (menu[1].tagname === 'subcategory' && menu[1].activeClass === true)) ? 'active' : ''">
+                        <a (click)="menuBarActive('subcategory', 1)">
+                            <i class="fa fa-clone"></i> Sub Category
+                            <span class="fa"
+                                  [ngClass]="((menu[1] !== undefined) && (menu[1].tagname === 'subcategory' && menu[1].activeClass === true)) ? 'fa-chevron-down' : 'fa-chevron-right'">
+                            </span>
+                        </a>
+                        <ul class="nav child_menu" [ngStyle]="{'display':((menu[1] !== undefined) && (menu[1].tagname === 'subcategory')) ? 'block' : 'none' }">
+                            <li class="current-page"><a href="#" routerLink="admin/sub-category/detail/0">Add</a></li>
+                            <li class="current-page"><a href="#" routerLink="admin/sub-category">Edit</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>

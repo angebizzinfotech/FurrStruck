@@ -1,0 +1,30 @@
+.login_wrapper {
+    right: 0;
+    margin: 5% auto 0;
+    max-width: 350px;
+    position: relative;
+}
+.animate {
+    animation-duration: .5s;
+    animation-timing-function: ease;
+    animation-fill-mode: both;
+}
+.login_form {
+    z-index: 22;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+.login_content {
+    margin: 0 auto;
+    padding: 25px 0 0;
+    position: relative;
+    text-align: center;
+    text-shadow: 0 1px 0 #fff;
+    min-width: 280px;
+}
+
+.login_content form {
+    margin: 20px 0;
+    position: relative;
+}

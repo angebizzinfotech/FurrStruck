@@ -1,0 +1,80 @@
+
+.leftbar {
+    padding-right: 139px;
+    padding-left: 59px;
+}
+
+.rightbar {
+    margin-left: -56px;
+    max-width: 220px;
+}
+
+@media (max-width: 768px) {
+    .rightbar {
+        margin-left: 118px;
+        max-width: 220px;
+    }
+}
+
+span {
+    color: red;
+    cursor: pointer;
+    position: absolute;
+    margin-left: 10px;
+    margin-top: 0px;
+}
+.image-wrapper li {
+    width: 290px;
+    height: 150px;
+    margin: 10px;
+    float: left;
+    border: 1px solid #ccc;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    cursor: default;
+    background: #fff;
+    margin-bottom: 25px;
+}
+.browse-btn {
+    box-sizing: border-box;
+    display: inline-block;
+    margin: 0.5rem;
+    position: relative;
+    width: 290px;
+    height: 150px;
+    border:1px solid #ccc;
+    text-align: center;
+}
+.browse-image {
+    position: relative;
+    top: 25%;
+}
+.product-image{
+    width:100%;
+    height:125px;
+}
+a.delete-btn {
+    color: #f00;
+    cursor: pointer;
+}
+#pimage {
+    cursor: pointer;
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top:0;
+    bottom:0;
+    left:0;
+    right: 0;
+    z-index: 3;
+}
+.error {
+    color: #ff0000;
+}
+.mat-icon{
+    margin-left: 60px;
+    margin-top: -50px;
+    position: absolute;
+}

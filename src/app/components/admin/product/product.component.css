@@ -1,0 +1,11 @@
+span {
+    cursor: pointer;
+    color: blue;
+}
+mat-form-field {
+    width: 100%;
+}
+.edit {
+    cursor: pointer;
+    color: blue;
+}

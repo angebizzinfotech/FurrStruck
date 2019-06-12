@@ -1,0 +1,81 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+html,
+body {
+    height: 100%;
+    background: #F7F7F7;
+    color: #73879C;
+    font-family: "Helvetica Neue",Roboto,Arial,"Droid Sans",sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.471;
+}
+.masterModalPopup {
+    background: black;
+    opacity: 0.7;
+}
+h2 {
+    color: #73879C;
+    text-align: center;
+    padding-bottom: 18px;
+}
+
+body {
+    margin: 0px;
+}
+
+.container-fluid {
+    height: 100%;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.content {
+    margin: 7px;
+}
+table {
+    width: 100%;
+}
+
+table.dataTable {
+    clear: both;
+    margin-top: 6px !important;
+    margin-bottom: 6px !important;
+    max-width: none !important;
+    border-collapse: separate !important;
+}
+
+.table-bordered {
+    border: 1px solid #ddd;
+}
+table {
+    background-color: transparent;
+}
+
+.table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: #f9f9f9;
+}
+tr.mat-footer-row, tr.mat-row {
+    height: 38px !important;
+}
+.success-snackbar {
+    background: green;
+}
+
+.danger-snackbar {
+    background: #F44336;
+}
+
+.required {
+    position: absolute;
+    margin-top: 2px;
+    margin-left: 2px;
+    color: red;
+    font-size: 1.2em;
+}
+
+.form-container {
+    justify-content: center !important;
+}
