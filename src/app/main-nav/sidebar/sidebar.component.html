@@ -1,4 +1,4 @@
-<div id="sidebar-menu" class="main_menu_side hidden-print main_menu" *ngIf="authService.getRoleNo() === '10'">
+<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
     <div class="menu_section active">
         <ul class="nav side-menu">
             <li>
@@ -6,7 +6,7 @@
                     <i class="fa fa-home"></i> Home
                 </a>
             </li>
-            <li [ngClass]="((menu.length > 0) && (menu[0].tagname === 'user' && menu[0].activeClass === true)) ? 'active' : ''">
+            <li *ngIf="authService.getRoleNo() === '10'" [ngClass]="((menu.length > 0) && (menu[0].tagname === 'user' && menu[0].activeClass === true)) ? 'active' : ''">
                 <a (click)="menuBarActive('user', 0)">
                     <i class="fa fa-users" aria-hidden="true"></i> User Management
                     <span class="fa"

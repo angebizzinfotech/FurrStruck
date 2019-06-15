@@ -4,7 +4,7 @@ import { NgxSpinnerService} from 'ngx-spinner';
 import {ApiService} from '../../service/admin/api.service';
 import {HttpService} from '../../service/admin/http.service';
 import {Router} from '@angular/router';
-import {CommonService} from '../../service/common.service';
+import {CommonService} from '../../service/admin/common.service';
 
 @Component({
     selector: 'app-admin-login',
@@ -25,7 +25,7 @@ export class AdminLoginComponent implements OnInit {
 
     ngOnInit() {
         if (localStorage.getItem('token')) {
-            this.router.navigate(['/admin/user']);
+            this.router.navigate(['/admin/dashboard']);
         }
     }
 
@@ -39,7 +39,8 @@ export class AdminLoginComponent implements OnInit {
                 localStorage.setItem('uid', btoa(result.data[0].uId));
                 localStorage.setItem('user', 'admin');
                 this.spinner.hide();
-                this.router.navigate(['/admin/user']);
+                this.commonService.openSnackBar(result.message, 'Success', 'success-snackbar');
+                this.router.navigate(['/admin/dashboard']);
             } else {
                 this.spinner.hide();
                 this.errorMsg = result.message;

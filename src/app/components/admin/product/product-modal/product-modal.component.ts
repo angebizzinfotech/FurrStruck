@@ -126,6 +126,7 @@ export class ProductModalComponent implements OnInit {
             for (let i = 0; i < result.data.pImages.length; i++) {
                 this.urls.push(null);
                 this.base64textString.push(null);
+                this.fileStream.push(null);
                 (<FormArray>this.form.get('pImages')).push(
                     new FormGroup({
                         piId: new FormControl(result.data.pImages[i].piId),
@@ -134,7 +135,7 @@ export class ProductModalComponent implements OnInit {
                         pImg: new FormControl(result.data.pImages[i].imageFileName),
                         imageOrder: new FormControl(result.data.pImages[i].imageOrder),
                         type: new FormControl(result.data.pImages[i].type),
-                        orderNo: new FormControl(),
+                        // orderNo: new FormControl(),
                         iId : new FormControl(1)
                     })
                 );
@@ -147,15 +148,26 @@ export class ProductModalComponent implements OnInit {
             formData['pImages'] = this.getControlsValue();
             this.http.postRequest(this.api.addProduct, formData).subscribe(
                 res => {
+                    const result : any = res;
                     this.spinner.hide();
-                    this.commonService.openSnackBar('Successfully inserted', 'Success', 'success-snackbar');
-                    this.router.navigate(['admin/product']);
+                    if(result.status)
+                    {
+                        this.commonService.openSnackBar(result.message, 'Success', 'success-snackbar');
+                        this.router.navigate(['admin/product']);
+                    }
+                    else
+                    {
+                        this.commonService.openSnackBar(result.message, 'Close', 'danger-snackbar');
+                       
+                    }
+                    
                 }
             );
         } else {
             this.http.putRequest(this.api.editProduct + this.pId, formData).subscribe(
                 res => {
                     const result: any = res;
+                    this.spinner.hide();
                     if (result.status) {
                         this.commonService.openSnackBar(result.message, 'Success', 'success-snackbar');
                         this.router.navigate(['admin/product']);
@@ -217,7 +229,6 @@ export class ProductModalComponent implements OnInit {
                 return false;
             }
         }
-        this.fileStream = [];
         this.urlStream(evt.target.files);
 
         for (let i = 0; i < evt.target.files.length; i++) {
@@ -232,20 +243,24 @@ export class ProductModalComponent implements OnInit {
 
         this.spinner.show();
         setTimeout(() => {
-
+            console.log(this.base64textString)
+            console.log(this.fileStream)
             for (let i = 0; i < this.fileStream.length; i++) {
-                (<FormArray>this.form.get('pImages')).push(
-                    new FormGroup({
-                        piId: new FormControl(0),
-                        pId: new FormControl(this.pId),
-                        imageAltTag: new FormControl(this.fileStream[i].name),
-                        pImg: new FormControl(this.base64textString[i]),
-                        imageOrder: new FormControl(''),
-                        type: new FormControl(this.fileStream[i].name.split('.')[1]),
-                        orderNo: new FormControl(''),
-                        iId : new FormControl(0)
-                    })
-                );
+                if (this.fileStream[i] && this.fileStream[i].name !== null) {
+                    (<FormArray>this.form.get('pImages')).push(
+                        new FormGroup({
+                            piId: new FormControl(0),
+                            pId: new FormControl(this.pId),
+                            imageAltTag: new FormControl(this.fileStream[i].name),
+                            pImg: new FormControl(this.base64textString[i]),
+                            imageOrder: new FormControl(''),
+                            type: new FormControl(this.fileStream[i].name.split('.')[1]),
+                            // orderNo: new FormControl(''),
+                            iId : new FormControl(0)
+                        })
+                    );
+                }
+
             }
             this.spinner.hide();
         }, 500);
@@ -281,17 +296,28 @@ export class ProductModalComponent implements OnInit {
         (<FormArray>this.form.get('pImages')).removeAt(i);
         this.urls.splice(i, 1);
         this.base64textString.splice(i, 1);
+        this.fileStream.splice(i, 1);
     }
 
     delete(id, i) {
         if (!confirm('Are you sure you want to delete!!!')) {
             return false;
         }
-        this.http.postRequest(this.api.deletProductImages + id, {}).subscribe(res => {
+        this.http.putRequest(this.api.deletProductImages + id, {}).subscribe(res => {
             const result: any = res;
             (<FormArray>this.form.get('pImages')).removeAt(i);
             this.urls.splice(i, 1);
             this.base64textString.splice(i, 1);
+            this.fileStream.splice(i, 1);
+            this.spinner.hide();
+            if(result.status)
+            {
+                this.commonService.openSnackBar(result.message, 'Success', 'success-snackbar');
+            }
+            else
+            {
+                this.commonService.openSnackBar(result.message, 'Close', 'danger-snackbar');
+            }
         });
     }
 }

@@ -239,13 +239,13 @@
                                         value="{{j + 1}}">{{j + 1}}</option>
                             </select>
                             <span *ngIf="form.value.pImages[i].piId > 0" (click)="delete(form.value.pImages[i].piId, i)">
-                                <button class="delete" mat-icon-button style="color: #ff4081">
+                                <a class="delete" mat-icon-button style="color: #ff4081">
                                     <mat-icon aria-label="Delete">delete</mat-icon>
-                                </button></span>
+                                </a></span>
                             <span *ngIf="form.value.pImages[i].piId === 0" (click)="remove(i)">
-                                <button class="delete" mat-icon-button style="color: #ff4081">
+                                <a class="delete" mat-icon-button style="color: #ff4081">
                                     <mat-icon>remove_circle</mat-icon>
-                                </button>
+                                </a>
                             </span>
                         </td>
                     </tr>

@@ -40,7 +40,10 @@ export class ProductComponent implements OnInit {
 
     getProductDetails(formData) {
         this.list = [];
-        this.http.postRequest(this.api.getproductList, formData).subscribe(
+    
+        let formData1 = JSON.parse(JSON.stringify(formData).replace(/"\s+|\s+"/g,'"'));
+
+        this.http.postRequest(this.api.getproductList, formData1).subscribe(
             res => {
                 const result: any = res;
                 this.spinner.hide();

@@ -61,9 +61,9 @@
                         <button mat-icon-button style="color: #ff4081" routerLink="/admin/product/detail/{{element.pId}}">
                             <mat-icon aria-label="Edit">edit</mat-icon>
                         </button>
-                        <button mat-icon-button style="color: #ff4081" (click)="delete(element.pId)">
+                        <a mat-icon-button style="color: #ff4081" (click)="delete(element.pId)">
                             <mat-icon aria-label="Delete">delete</mat-icon>
-                        </button>
+                        </a>
                     </td>
                 </ng-container>
 
