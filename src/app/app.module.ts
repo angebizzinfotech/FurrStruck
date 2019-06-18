@@ -14,12 +14,18 @@ import {AdminAuthGuardService} from './helper/admin-auth-guard.service';
 import {HttpInterceptorService} from './helper/http-interceptor.service';
 import {NgxSpinnerModule} from 'ngx-spinner';
 import { SidebarComponent } from './main-nav/sidebar/sidebar.component';
+import { HomeComponent } from './components/front-end/home/home.component';
+import { ProductDetailComponent } from './components/front-end/product-detail/product-detail.component';
+import { ProductListComponent } from './components/front-end/product-list/product-list.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         MainNavComponent,
-        SidebarComponent
+        SidebarComponent,
+        HomeComponent,
+        ProductDetailComponent,
+        ProductListComponent
     ],
     imports: [
         BrowserModule,

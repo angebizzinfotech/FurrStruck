@@ -1,5 +1,5 @@
 
-<div class="container-fluid">
+<div class="container-fluid-admin" *ngIf="!url">
     <router-outlet *ngIf="!authService.getToken()"></router-outlet>
     <app-main-nav *ngIf="authService.getToken()">
         <div class="content">
@@ -7,4 +7,8 @@
         </div>
     </app-main-nav>
 </div>
-<ngx-spinner></ngx-spinner>
+<div *ngIf="url">
+    <div class="body">
+        <router-outlet></router-outlet>
+    </div>
+</div>

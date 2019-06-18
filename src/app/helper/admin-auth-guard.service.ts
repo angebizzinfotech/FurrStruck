@@ -14,7 +14,7 @@ export class AdminAuthGuardService {
         if (this.authService.loggedIn()) {
             return true;
         } else {
-            this.router.navigate(['/']);
+            this.router.navigate(['/admin']);
             return false;
         }
     }

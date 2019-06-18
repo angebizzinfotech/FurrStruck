@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {AdminAuthService} from './helper/admin-auth.service';
-import {CommonService} from './service/admin/common.service';
+import {NgxSpinnerService} from 'ngx-spinner';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -12,7 +13,9 @@ import {CommonService} from './service/admin/common.service';
 
 export class AppComponent {
     title = 'admin';
+    url = true;
 
-    constructor(private authService: AdminAuthService) {
+    constructor(private authService: AdminAuthService,
+                private activateRoute: Router, private spinner: NgxSpinnerService) {
     }
 }

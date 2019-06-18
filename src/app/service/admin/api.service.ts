@@ -53,6 +53,10 @@ export class ApiService {
     searchProduct = 'product/searchProduct';
     deletProductImages = 'product/deleteProductImage/';
 
+
+    // Front-end -> Product
+    searchProductDetail = '';
+
     constructor() {
     }
 }

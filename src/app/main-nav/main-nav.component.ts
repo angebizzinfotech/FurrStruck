@@ -22,7 +22,6 @@ export class MainNavComponent {
                 public authService: AdminAuthService) { }
 
     logout() {
-        alert()
         localStorage.clear();
     }
 

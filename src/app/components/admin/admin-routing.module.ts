@@ -17,9 +17,11 @@ import {ProductModalComponent} from './product/product-modal/product-modal.compo
 import {ProductImageModalComponent} from './product/product-image-modal/product-image-modal.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProductViewModalComponent } from './product/product-view-modal/product-view-modal.component';
+import {AdminAuthGuardService} from '../../helper/admin-auth-guard.service';
+import {AdminLoginComponent} from '../../common/admin-login/admin-login.component';
  
 const routes: Routes = [
-    { path: '', component: UserComponent },
+    { path: '', component: AdminLoginComponent },
     { path: 'dashboard', component: DashboardComponent },
     { path: 'user', component: UserComponent },
     { path: 'user/detail/:id', component: UserModalComponent },
@@ -51,7 +53,8 @@ const routes: Routes = [
         ProductModalComponent,
         ProductImageModalComponent,
         DashboardComponent,
-        ProductViewModalComponent
+        ProductViewModalComponent,
+        AdminLoginComponent
     ],
     imports: [
         CommonModule,

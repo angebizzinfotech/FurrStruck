@@ -40,7 +40,7 @@ export class AdminLoginComponent implements OnInit {
                 localStorage.setItem('user', 'admin');
                 this.spinner.hide();
                 this.commonService.openSnackBar(result.message, 'Success', 'success-snackbar');
-                this.router.navigate(['/admin/dashboard']);
+                this.router.navigate(['/admin/user']);
             } else {
                 this.spinner.hide();
                 this.errorMsg = result.message;

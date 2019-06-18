@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import "assets/css/common.css";
 
 html,
 body {
@@ -26,7 +27,7 @@ body {
     margin: 0px;
 }
 
-.container-fluid {
+.container-fluid-admin {
     height: 100%;
     padding-left: 0;
     padding-right: 0;
@@ -78,4 +79,65 @@ tr.mat-footer-row, tr.mat-row {
 
 .form-container {
     justify-content: center !important;
+}
+
+.furr-btn {
+    font-family: Dosis;
+    display: inline-block;
+    font-size: 20px;
+    height: 38px;
+    /* margin: 0px 5px; */
+    border-radius: 7px;
+    background-color: #fff;
+    font-weight: bold;
+    border-radius: 14px;
+    border: solid 0.5px #eae7f1;
+    color: #212121;
+}
+
+#furr-carousel .furr-btn {
+    width: 40px;
+}
+
+.carousel-indicators .active {
+    opacity: 1;
+}
+
+.carousel-indicators li {
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+}
+
+.carousel-indicators li {
+    box-sizing: content-box;
+    -ms-flex: 0 1 auto;
+    flex: 0 1 auto;
+    margin-right: 3px;
+    margin-left: 3px;
+    text-indent: -999px;
+    cursor: pointer;
+    background-color: #c9c1d8;
+    background-clip: padding-box;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    opacity: .5;
+    transition: opacity .6s ease;
+}
+
+.carousel-indicators {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    top: 90%;
+    z-index: 15;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    padding-left: 0;
+    margin-right: 15%;
+    margin-left: 15%;
+    list-style: none;
 }
